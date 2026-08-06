@@ -61,26 +61,32 @@
     gap: 2rem;
   }
   nav.links a {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    height: 1.2em;
+    display: inline-flex;
     font-size: 0.8rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink);
     text-decoration: none;
   }
-  nav.links a .stack {
-    display: block;
-    transition: transform 0.4s var(--ease-pop);
+  nav.links a .char {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+    line-height: 1;
   }
-  nav.links a .stack span {
+  nav.links a .char-stack {
     display: block;
-    height: 1.2em;
+    transition: transform 0.35s var(--ease);
+    transition-delay: 0s;
   }
-  nav.links a:hover .stack {
-    transform: translateY(-1.2em);
+  nav.links a .char-stack span {
+    display: block;
+    height: 1em;
+    line-height: 1;
+  }
+  nav.links a:hover .char-stack {
+    transform: translateY(-1em);
+    transition-delay: calc(var(--i, 0) * 0.03s);
   }
   @media (max-width: 640px) {
     nav.links { display: none; }
@@ -226,18 +232,17 @@
 <header class="nav">
   <a href="#top" class="wordmark">IRVVEE</a>
   <nav class="links">
-    <a href="#apps"><span class="stack"><span>Apps</span><span>Apps</span></span></a>
-    <a href="#contents"><span class="stack"><span>Contents</span><span>Contents</span></span></a>
-    <a href="#contact"><span class="stack"><span>Contact</span><span>Contact</span></span></a>
+    <a href="#apps" data-label="Apps"></a>
+    <a href="#contents" data-label="Contents"></a>
+    <a href="#contact" data-label="Contact"></a>
   </nav>
 </header>
 
 <section class="hero" id="top">
-  <div class="hero-accent">Individual Business</div>
+  <div class="hero-accent">IRVVEE</div>
   <div class="hero-inner">
-    <div class="eyebrow reveal">IRVVEE — Individual Business</div>
     <h1 class="reveal">アプリ開発と<br>コンテンツ制作</h1>
-    <p class="lead reveal">個人事業主として、生活を少し便利にするアプリの開発と、食にまつわる映像コンテンツの制作・配信を行っています。</p>
+    <p class="lead reveal">生活を少し便利にするアプリの開発と、食にまつわる映像コンテンツの制作・配信を行っています。</p>
   </div>
   <div class="scroll-cue">Scroll</div>
 </section>
@@ -285,6 +290,21 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.querySelectorAll("nav.links a[data-label]").forEach((a) => {
+    const label = a.dataset.label;
+    [...label].forEach((ch, i) => {
+      const glyph = ch === " " ? " " : ch;
+      const charEl = document.createElement("span");
+      charEl.className = "char";
+      charEl.style.setProperty("--i", i);
+      const stackEl = document.createElement("span");
+      stackEl.className = "char-stack";
+      stackEl.innerHTML = `<span>${glyph}</span><span>${glyph}</span>`;
+      charEl.appendChild(stackEl);
+      a.appendChild(charEl);
+    });
+  });
 
   const revealEls = document.querySelectorAll(".reveal");
   const io = new IntersectionObserver((entries) => {
