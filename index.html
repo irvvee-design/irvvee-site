@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRVVEE(イルヴィー)| アプリ開発・コンテンツ制作</title>
+<meta name="description" content="IRVVEEは、スマートフォンアプリの開発配信と、料理コンテンツの制作配信を行う個人事業です。">
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #faf7f2;
+    --accent: #b5502e;
+    --line: #e4dcd0;
+    --muted: #6b6459;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    line-height: 1.8;
+  }
+  header {
+    padding: 6rem 1.5rem 4rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .brand {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .lead {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 46ch;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+  section {
+    border-top: 1px solid var(--line);
+    padding: 3rem 0;
+  }
+  section h2 {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+  .work {
+    display: grid;
+    gap: 1.75rem;
+  }
+  .work-item h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.15rem;
+  }
+  .work-item p {
+    margin: 0 0 0.6rem;
+    color: var(--muted);
+  }
+  .work-item a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    font-size: 0.9rem;
+  }
+  .work-item a:hover { color: var(--accent); }
+  address {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  address a { color: var(--ink); }
+  footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">IRVVEE</div>
+  <h1>アプリ開発とコンテンツ制作</h1>
+  <p class="lead">個人事業主として、生活を少し便利にするアプリの開発と、食にまつわる映像コンテンツの制作・配信を行っています。</p>
+</header>
+
+<main>
+  <section>
+    <h2>Apps</h2>
+    <div class="work">
+      <div class="work-item">
+        <h3>ズボラストック</h3>
+        <p>日用品の残量管理と家族共有ができるアプリ。</p>
+        <a href="https://zuborastock.web.app" target="_blank" rel="noopener">zuborastock.web.app</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contents</h2>
+    <div class="work">
+      <div class="work-item">
+        <h3>キツネのまかない飯【イタリア伝統 郷土 家庭料理】</h3>
+        <p>日本の家庭でも作りやすいイタリア郷土料理を紹介する動画チャンネル。</p>
+        <a href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener">YouTube チャンネル</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <address>
+      屋号:IRVVEE(個人事業主)<br>
+      Email: <a href="mailto:irvvee.design.marketing@gmail.com">irvvee.design.marketing@gmail.com</a><br>
+      X: <a href="https://x.com/AMATSUKI999" target="_blank" rel="noopener">@AMATSUKI999</a>
+    </address>
+  </section>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> IRVVEE
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
