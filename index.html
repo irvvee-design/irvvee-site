@@ -5,105 +5,245 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IRVVEE(イルヴィー)| アプリ開発・コンテンツ制作</title>
 <meta name="description" content="IRVVEEは、スマートフォンアプリの開発配信と、料理コンテンツの制作配信を行う個人事業です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1c1a17;
-    --paper: #faf7f2;
-    --accent: #b5502e;
-    --line: #e4dcd0;
-    --muted: #6b6459;
+    --ink: #1a1a1a;
+    --paper: #f7f7f7;
+    --black: #000000;
+    --white: #ffffff;
+    --line: #eeeeee;
+    --muted: #666666;
+    --faint: #999999;
+    --charcoal: #282828;
+    --ease: cubic-bezier(0.4, 0.4, 0, 1);
+    --ease-pop: cubic-bezier(0.55, 0.44, 0.35, 1.23);
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    font-family: "Inter", "Noto Sans JP", sans-serif;
     line-height: 1.8;
   }
-  header {
-    padding: 6rem 1.5rem 4rem;
-    max-width: 720px;
-    margin: 0 auto;
+  .serif { font-family: "PT Serif", serif; }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: rgba(247, 247, 247, 0.85);
+    backdrop-filter: blur(8px);
+    transition: background 0.5s var(--ease);
   }
-  .brand {
-    font-size: 0.85rem;
-    letter-spacing: 0.25em;
-    color: var(--accent);
+  .wordmark {
+    font-family: "PT Serif", serif;
+    font-weight: 900;
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 3px;
+    border-bottom: 3px double var(--ink);
+  }
+  nav.links {
+    display: flex;
+    gap: 2rem;
+  }
+  nav.links a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 1.2em;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    color: var(--ink);
+    text-decoration: none;
   }
-  h1 {
-    font-size: clamp(2rem, 5vw, 2.75rem);
-    margin: 0 0 0.5rem;
-    letter-spacing: 0.02em;
+  nav.links a .stack {
+    display: block;
+    transition: transform 0.4s var(--ease-pop);
   }
-  .lead {
+  nav.links a .stack span {
+    display: block;
+    height: 1.2em;
+  }
+  nav.links a:hover .stack {
+    transform: translateY(-1.2em);
+  }
+  @media (max-width: 640px) {
+    nav.links { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    overflow: hidden;
+  }
+  .hero-accent {
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: "PT Serif", serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    color: var(--faint);
+    text-transform: uppercase;
+  }
+  .hero-inner { max-width: 760px; }
+  .hero .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    line-height: 1.25;
+    margin: 0 0 1.5rem;
+    letter-spacing: 0.01em;
+  }
+  .hero p.lead {
     color: var(--muted);
     font-size: 1.05rem;
     max-width: 46ch;
   }
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 1.5rem 6rem;
-  }
-  section {
-    border-top: 1px solid var(--line);
-    padding: 3rem 0;
-  }
-  section h2 {
-    font-size: 0.85rem;
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 1.5rem;
+    color: var(--faint);
   }
-  .work {
-    display: grid;
-    gap: 1.75rem;
+  .scroll-cue::after {
+    content: "";
+    width: 1px;
+    height: 32px;
+    background: var(--faint);
+    animation: scrollLine 1.8s var(--ease) infinite;
   }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    50.1% { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ---------- Sections ---------- */
+  section.block {
+    padding: 6rem 2rem;
+  }
+  section.block.on-white { background: var(--paper); }
+  section.block.on-black { background: var(--black); color: var(--white); }
+  .block-inner { max-width: 760px; margin: 0 auto; }
+  .block h2 {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0 0 2.5rem;
+    color: inherit;
+    opacity: 0.55;
+  }
+  .work { display: grid; gap: 2rem; }
+  .work-item {
+    border-top: 1px solid var(--line);
+    padding-top: 2rem;
+  }
+  section.on-black .work-item { border-top-color: rgba(255,255,255,0.15); }
   .work-item h3 {
-    margin: 0 0 0.35rem;
-    font-size: 1.15rem;
+    font-family: "PT Serif", serif;
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
   }
-  .work-item p {
-    margin: 0 0 0.6rem;
-    color: var(--muted);
-  }
+  .work-item p { margin: 0 0 0.75rem; opacity: 0.75; }
   .work-item a {
-    color: var(--ink);
+    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    font-size: 0.9rem;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 0.3s var(--ease);
   }
-  .work-item a:hover { color: var(--accent); }
+  .work-item a:hover { opacity: 0.6; }
+
   address {
     font-style: normal;
-    color: var(--muted);
     font-size: 0.95rem;
+    opacity: 0.85;
   }
-  address a { color: var(--ink); }
+  address a { color: inherit; }
+
   footer {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 2rem 1.5rem 3rem;
-    color: var(--muted);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--line);
+    padding: 2.5rem 2rem 3rem;
+    color: var(--faint);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="brand">IRVVEE</div>
-  <h1>アプリ開発とコンテンツ制作</h1>
-  <p class="lead">個人事業主として、生活を少し便利にするアプリの開発と、食にまつわる映像コンテンツの制作・配信を行っています。</p>
+<header class="nav">
+  <a href="#top" class="wordmark">IRVVEE</a>
+  <nav class="links">
+    <a href="#apps"><span class="stack"><span>Apps</span><span>Apps</span></span></a>
+    <a href="#contents"><span class="stack"><span>Contents</span><span>Contents</span></span></a>
+    <a href="#contact"><span class="stack"><span>Contact</span><span>Contact</span></span></a>
+  </nav>
 </header>
 
-<main>
-  <section>
+<section class="hero" id="top">
+  <div class="hero-accent">Individual Business</div>
+  <div class="hero-inner">
+    <div class="eyebrow reveal">IRVVEE — Individual Business</div>
+    <h1 class="reveal">アプリ開発と<br>コンテンツ制作</h1>
+    <p class="lead reveal">個人事業主として、生活を少し便利にするアプリの開発と、食にまつわる映像コンテンツの制作・配信を行っています。</p>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<section class="block on-white reveal" id="apps">
+  <div class="block-inner">
     <h2>Apps</h2>
     <div class="work">
       <div class="work-item">
@@ -112,9 +252,11 @@
         <a href="https://zuborastock.web.app" target="_blank" rel="noopener">zuborastock.web.app</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
+<section class="block on-black reveal" id="contents">
+  <div class="block-inner">
     <h2>Contents</h2>
     <div class="work">
       <div class="work-item">
@@ -123,17 +265,19 @@
         <a href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener">YouTube チャンネル</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
+<section class="block on-white reveal" id="contact">
+  <div class="block-inner">
     <h2>Contact</h2>
     <address>
       屋号:IRVVEE(個人事業主)<br>
       Email: <a href="mailto:irvvee.design.marketing@gmail.com">irvvee.design.marketing@gmail.com</a><br>
       X: <a href="https://x.com/AMATSUKI999" target="_blank" rel="noopener">@AMATSUKI999</a>
     </address>
-  </section>
-</main>
+  </div>
+</section>
 
 <footer>
   &copy; <span id="year"></span> IRVVEE
@@ -141,6 +285,17 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+  revealEls.forEach((el) => io.observe(el));
 </script>
 
 </body>
