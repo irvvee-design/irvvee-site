@@ -203,8 +203,22 @@
     font-style: normal;
     font-size: 0.95rem;
     opacity: 0.85;
+    margin: 0 0 2.5rem;
   }
   address a { color: inherit; }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 0.3s var(--ease);
+  }
+  .cta-link:hover { opacity: 0.6; }
 
   footer {
     max-width: 760px;
@@ -234,7 +248,7 @@
   <nav class="links">
     <a href="#apps" data-label="Apps"></a>
     <a href="#contents" data-label="Contents"></a>
-    <a href="#contact" data-label="Contact"></a>
+    <a href="contact.html" data-label="Contact"></a>
   </nav>
 </header>
 
@@ -283,9 +297,10 @@
     <h2>Contact</h2>
     <address>
       屋号:IRVVEE(個人事業主)<br>
-      Email: <a href="mailto:irvvee.design.marketing@gmail.com">irvvee.design.marketing@gmail.com</a><br>
       X: <a href="https://x.com/AMATSUKI999" target="_blank" rel="noopener">@AMATSUKI999</a>
     </address>
+    <p>アプリやコンテンツについてのご質問・ご依頼は、お問い合わせフォームよりご連絡ください。</p>
+    <a href="contact.html" class="cta-link">お問い合わせフォームへ</a>
   </div>
 </section>
 

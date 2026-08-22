@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | IRVVEE(アーヴィー)</title>
+<meta name="description" content="IRVVEEへのお問い合わせフォームです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f7f7f7;
+    --black: #000000;
+    --white: #ffffff;
+    --line: #eeeeee;
+    --muted: #666666;
+    --faint: #999999;
+    --charcoal: #282828;
+    --ease: cubic-bezier(0.4, 0.4, 0, 1);
+    --ease-pop: cubic-bezier(0.55, 0.44, 0.35, 1.23);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter", "Noto Sans JP", sans-serif;
+    line-height: 1.8;
+  }
+  .serif { font-family: "PT Serif", serif; }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: rgba(247, 247, 247, 0.85);
+    backdrop-filter: blur(8px);
+    transition: background 0.5s var(--ease);
+  }
+  .wordmark {
+    font-family: "PT Serif", serif;
+    font-weight: 900;
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 3px;
+    border-bottom: 3px double var(--ink);
+  }
+  nav.links {
+    display: flex;
+    gap: 2rem;
+  }
+  nav.links a {
+    display: inline-flex;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  nav.links a .char {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+    line-height: 1;
+  }
+  nav.links a .char-stack {
+    display: block;
+    transition: transform 0.35s var(--ease);
+    transition-delay: 0s;
+  }
+  nav.links a .char-stack span {
+    display: block;
+    height: 1em;
+    line-height: 1;
+  }
+  nav.links a:hover .char-stack {
+    transform: translateY(-1em);
+    transition-delay: calc(var(--i, 0) * 0.03s);
+  }
+  @media (max-width: 640px) {
+    nav.links { display: none; }
+  }
+
+  /* ---------- Page header ---------- */
+  .page-hero {
+    padding: 9rem 2rem 3rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .page-hero .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+  .page-hero h1 {
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.35;
+    margin: 0 0 1.25rem;
+    letter-spacing: 0.01em;
+  }
+  .page-hero p.lead {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 46ch;
+  }
+
+  /* ---------- Sections ---------- */
+  section.block {
+    padding: 0 2rem 6rem;
+  }
+  section.block.on-white { background: var(--paper); }
+  .block-inner { max-width: 760px; margin: 0 auto; }
+
+  address {
+    font-style: normal;
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin: 0 0 2.5rem;
+  }
+  address a { color: inherit; }
+
+  /* ---------- Contact form ---------- */
+  .contact-form { max-width: 480px; }
+  .contact-form .field { margin-bottom: 1.5rem; }
+  .contact-form label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+  .contact-form .optional {
+    text-transform: none;
+    letter-spacing: 0;
+    opacity: 0.7;
+    margin-left: 0.4em;
+  }
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: inherit;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 0;
+    outline: none;
+    transition: border-color 0.3s var(--ease);
+  }
+  .contact-form input[type="text"]:focus,
+  .contact-form input[type="email"]:focus,
+  .contact-form textarea:focus {
+    border-bottom-color: var(--ink);
+  }
+  .contact-form textarea { resize: vertical; min-height: 6rem; }
+  .contact-form .hp {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .contact-form .form-note {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin: 0 0 1.5rem;
+  }
+  .contact-form button {
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    padding: 0.85rem 2rem;
+    cursor: pointer;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .contact-form button:hover { background: var(--ink); color: var(--paper); }
+  .contact-form .form-error {
+    font-size: 0.85rem;
+    color: #b3261e;
+    margin: 1rem 0 0;
+  }
+  .contact-form .form-success {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    margin: 1rem 0 0;
+  }
+
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 3rem;
+    color: var(--faint);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="wordmark">IRVVEE</a>
+  <nav class="links">
+    <a href="index.html#apps" data-label="Apps"></a>
+    <a href="index.html#contents" data-label="Contents"></a>
+    <a href="contact.html" data-label="Contact"></a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <p class="eyebrow reveal">Contact</p>
+  <h1 class="reveal">お問い合わせ</h1>
+  <p class="lead reveal">アプリやコンテンツについてのご質問・ご依頼などは、下記フォームよりお気軽にお送りください。</p>
+</div>
+
+<section class="block on-white reveal">
+  <div class="block-inner">
+    <address>
+      屋号:IRVVEE(個人事業主)<br>
+      X: <a href="https://x.com/AMATSUKI999" target="_blank" rel="noopener">@AMATSUKI999</a>
+    </address>
+    <form class="contact-form" id="contact-form" novalidate>
+      <div class="field">
+        <label for="cf-name">お名前<span class="optional">(任意)</span></label>
+        <input type="text" id="cf-name" name="name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="cf-email">返信先メールアドレス</label>
+        <input type="email" id="cf-email" name="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="cf-message">お問い合わせ内容</label>
+        <textarea id="cf-message" name="message" rows="5" required></textarea>
+      </div>
+      <div class="field hp" aria-hidden="true">
+        <label for="cf-website">Website</label>
+        <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="cf-check"><span id="cf-check-q"></span></label>
+        <input type="text" id="cf-check" name="check" inputmode="numeric" autocomplete="off" required>
+      </div>
+      <p class="form-note">送信ボタンを押すと、入力内容を反映したメールソフトが起動します。</p>
+      <button type="submit">メールソフトで送信</button>
+      <p class="form-error" id="cf-error" role="alert" hidden></p>
+      <p class="form-success" id="cf-success" hidden>メールソフトを起動しました。そのまま送信してください。</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> IRVVEE
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.querySelectorAll("nav.links a[data-label]").forEach((a) => {
+    const label = a.dataset.label;
+    [...label].forEach((ch, i) => {
+      const glyph = ch === " " ? " " : ch;
+      const charEl = document.createElement("span");
+      charEl.className = "char";
+      charEl.style.setProperty("--i", i);
+      const stackEl = document.createElement("span");
+      stackEl.className = "char-stack";
+      stackEl.innerHTML = `<span>${glyph}</span><span>${glyph}</span>`;
+      charEl.appendChild(stackEl);
+      a.appendChild(charEl);
+    });
+  });
+
+  const revealEls = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+  revealEls.forEach((el) => io.observe(el));
+
+  // ---------- Contact form ----------
+  (() => {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+
+    const checkQ = document.getElementById("cf-check-q");
+    const checkInput = document.getElementById("cf-check");
+    const errorEl = document.getElementById("cf-error");
+    const successEl = document.getElementById("cf-success");
+
+    let a = 0, b = 0;
+    const newChallenge = () => {
+      a = 1 + Math.floor(Math.random() * 8);
+      b = 1 + Math.floor(Math.random() * 8);
+      checkQ.textContent = `確認のため計算してください: ${a} + ${b} = ?`;
+      checkInput.value = "";
+    };
+    newChallenge();
+
+    const contactUser = "irvvee.design.marketing";
+    const contactDomain = "gmail.com";
+    const contactAddress = `${contactUser}@${contactDomain}`;
+
+    const showError = (msg) => {
+      errorEl.textContent = msg;
+      errorEl.hidden = false;
+      successEl.hidden = true;
+    };
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+      successEl.hidden = true;
+
+      const honeypot = form.website.value.trim();
+      if (honeypot) {
+        // Bots fill hidden fields; silently drop without feedback.
+        return;
+      }
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError("有効なメールアドレスを入力してください。");
+        return;
+      }
+      if (!message) {
+        showError("お問い合わせ内容を入力してください。");
+        return;
+      }
+      if (parseInt(checkInput.value, 10) !== a + b) {
+        showError("計算結果が正しくありません。");
+        newChallenge();
+        return;
+      }
+
+      const subject = `[IRVVEEサイトより] お問い合わせ`;
+      const bodyLines = [
+        name ? `お名前: ${name}` : null,
+        `返信先: ${email}`,
+        "",
+        message,
+      ].filter((line) => line !== null);
+      const body = bodyLines.join("\n");
+
+      const mailtoUrl =
+        `mailto:${contactAddress}` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoUrl;
+      successEl.hidden = false;
+      newChallenge();
+    });
+  })();
+</script>
+
+</body>
+</html>
