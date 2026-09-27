@@ -220,8 +220,29 @@
   .work-item {
     border-top: 1px solid var(--line);
     padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
   }
   section.on-black .work-item { border-top-color: rgba(255,255,255,0.15); }
+  .work-item-body { flex: 1; min-width: 0; }
+  .work-item-thumb {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  section.on-black .work-item-thumb { border-color: rgba(255,255,255,0.15); }
+  .work-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .work-item h3 {
     font-family: "PT Serif", serif;
     font-size: 1.3rem;
@@ -239,6 +260,9 @@
     transition: opacity 0.3s var(--ease);
   }
   .work-item a:hover { opacity: 0.6; }
+  @media (max-width: 640px) {
+    .work-item-thumb { width: 52px; height: 52px; border-radius: 13px; }
+  }
 
   address {
     font-style: normal;
@@ -336,9 +360,24 @@
     <h2>Apps</h2>
     <div class="work">
       <div class="work-item">
-        <h3>ずぼらストック</h3>
-        <p>日用品の残量管理と家族共有ができるアプリ。</p>
-        <a href="https://zuborastock.web.app" target="_blank" rel="noopener">zuborastock.web.app</a>
+        <div class="work-item-body">
+          <h3>ずぼらストック</h3>
+          <p>日用品の残量管理と家族共有ができるアプリ。</p>
+          <a href="https://zuborastock.web.app" target="_blank" rel="noopener">zuborastock.web.app</a>
+        </div>
+        <div class="work-item-thumb">
+          <img src="icons/thumbs/zuborastock.png" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-item-body">
+          <h3>はちカルテ</h3>
+          <p>植物の栽培記録とケア通知ができるアプリ。</p>
+          <a href="https://hatikarte.web.app" target="_blank" rel="noopener">hatikarte.web.app</a>
+        </div>
+        <div class="work-item-thumb">
+          <img src="icons/thumbs/hachikarte.png" alt="" loading="lazy">
+        </div>
       </div>
     </div>
   </div>
@@ -353,19 +392,34 @@
     <h2>Contents</h2>
     <div class="work">
       <div class="work-item">
-        <h3>キツネのまかない飯【イタリア伝統 郷土 家庭料理】</h3>
-        <p>日本の家庭でも作りやすいイタリア郷土料理を紹介する動画チャンネル。</p>
-        <a href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener">YouTube チャンネル</a>
+        <div class="work-item-body">
+          <h3>キツネのまかない飯【イタリア伝統 郷土 家庭料理】</h3>
+          <p>日本の家庭でも作りやすいイタリア郷土料理を紹介する動画チャンネル。</p>
+          <a href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener">YouTube チャンネル</a>
+        </div>
+        <div class="work-item-thumb">
+          <img src="icons/thumbs/youtube.png" alt="" loading="lazy">
+        </div>
       </div>
       <div class="work-item">
-        <h3>NibLab</h3>
-        <p>万年筆の型番カタログと状態別の相場情報をまとめたデータベース。</p>
-        <a href="https://niblab.irvvee.com" target="_blank" rel="noopener">niblab.irvvee.com</a>
+        <div class="work-item-body">
+          <h3>NibLab</h3>
+          <p>万年筆の型番カタログと状態別の相場情報をまとめたデータベース。</p>
+          <a href="https://niblab.irvvee.com" target="_blank" rel="noopener">niblab.irvvee.com</a>
+        </div>
+        <div class="work-item-thumb">
+          <img src="icons/thumbs/niblab.svg" alt="" loading="lazy">
+        </div>
       </div>
       <div class="work-item">
-        <h3>Zenn</h3>
-        <p>アプリ開発で得た知見や技術メモを記事として発信しています。</p>
-        <a href="https://zenn.dev/irvvee" target="_blank" rel="noopener">zenn.dev/irvvee</a>
+        <div class="work-item-body">
+          <h3>Zenn</h3>
+          <p>アプリ開発で得た知見や技術メモを記事として発信しています。</p>
+          <a href="https://zenn.dev/irvvee" target="_blank" rel="noopener">zenn.dev/irvvee</a>
+        </div>
+        <div class="work-item-thumb">
+          <img src="icons/thumbs/zenn.png" alt="" loading="lazy">
+        </div>
       </div>
     </div>
   </div>
