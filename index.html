@@ -260,6 +260,7 @@
     transition: opacity 0.3s var(--ease);
   }
   .work-item a:hover { opacity: 0.6; }
+  .work-item-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
   @media (max-width: 640px) {
     .work-item-thumb { width: 52px; height: 52px; border-radius: 13px; }
   }
@@ -363,7 +364,10 @@
         <div class="work-item-body">
           <h3>ずぼらストック</h3>
           <p>日用品の残量管理と家族共有ができるアプリ。</p>
-          <a href="https://zuborastock.web.app" target="_blank" rel="noopener">zuborastock.web.app</a>
+          <div class="work-item-links">
+            <a href="https://play.google.com/store/apps/details?id=com.zuborastock.app" target="_blank" rel="noopener">Google Play で入手</a>
+            <a href="https://zuborastock.web.app" target="_blank" rel="noopener">Web版 zuborastock.web.app</a>
+          </div>
         </div>
         <div class="work-item-thumb">
           <img src="icons/thumbs/zuborastock.png" alt="" loading="lazy">
