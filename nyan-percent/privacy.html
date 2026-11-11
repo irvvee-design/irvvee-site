@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>にゃんぱ～せんと プライバシーポリシー | IRVVEE(アーヴィー)</title>
+<meta name="description" content="Androidアプリ「にゃんぱ～せんと」のプライバシーポリシーです。">
+<link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16140f;
+    --paper: #f6f4ef;
+    --line: #e2ddd0;
+    --muted: #625e53;
+    --faint: #948f7f;
+    --ease: cubic-bezier(0.4, 0.4, 0, 1);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter", "Noto Sans JP", sans-serif;
+    line-height: 1.8;
+  }
+
+  /* ---------- Nav (same as contact.html) ---------- */
+  header.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: rgba(246, 244, 239, 0.85);
+    backdrop-filter: blur(8px);
+  }
+  .wordmark { display: inline-flex; align-items: center; color: var(--ink); line-height: 0; }
+  .wordmark svg { height: 20px; width: auto; display: block; }
+  nav.links { display: flex; gap: 2rem; }
+  nav.links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  nav.links a:hover { text-decoration: underline; text-underline-offset: 0.3em; }
+  @media (max-width: 640px) {
+    header.nav { padding: 1.1rem 1rem; }
+    nav.links { gap: 1.1rem; }
+    nav.links a { font-size: 0.68rem; letter-spacing: 0.1em; }
+  }
+
+  /* ---------- Page header ---------- */
+  .page-hero { padding: 9rem 2rem 2.5rem; max-width: 760px; margin: 0 auto; }
+  .page-hero .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.25rem;
+  }
+  .page-hero .eyebrow::before { content: ""; width: 1.4em; height: 3px; background: currentColor; display: block; flex: none; }
+  .page-hero h1 {
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    line-height: 1.4;
+    margin: 0 0 1.25rem;
+  }
+  .page-hero p.lead { color: var(--muted); margin: 0; }
+
+  /* ---------- Policy body ---------- */
+  main.policy { max-width: 760px; margin: 0 auto; padding: 0 2rem 5rem; }
+  .policy h2 {
+    font-family: "PT Serif", serif;
+    font-size: 1.15rem;
+    margin: 2.75rem 0 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .policy p, .policy li { font-size: 0.95rem; }
+  .policy ul { padding-left: 1.25rem; margin: 0.5rem 0 1rem; }
+  .policy li { margin-bottom: 0.5rem; }
+  .policy .note { display: block; color: var(--muted); font-size: 0.875rem; }
+  .policy a { color: inherit; text-underline-offset: 0.2em; }
+  .policy .dates { margin-top: 3rem; color: var(--muted); font-size: 0.875rem; }
+  @media (max-width: 640px) {
+    .page-hero { padding: 7rem 1rem 2rem; }
+    main.policy { padding: 0 1rem 4rem; }
+  }
+
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 3rem;
+    color: var(--faint);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .footer-mark { height: 11px; width: auto; vertical-align: -1px; margin-right: 0.5em; opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="../index.html" class="wordmark" aria-label="IRVVEE">
+    <svg viewBox="-24 -34 600 170" aria-hidden="true" focusable="false">
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M37,0 L37,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M102,100 L102,0 L148,0 L148,44 L108,44"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M118,50 L158,100"/>
+      <path stroke-width="26" fill="none" stroke="currentColor" d="M184,-8 L224,108 L264,-8"/>
+      <path stroke-width="26" fill="none" stroke="currentColor" d="M290,-8 L330,108 L370,-8"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,0 L406,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,0 L452,0"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,50 L440,50"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,100 L452,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,0 L490,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,0 L536,0"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,50 L524,50"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,100 L536,100"/>
+    </svg>
+  </a>
+  <nav class="links">
+    <a href="../index.html#apps">Apps</a>
+    <a href="../index.html#contents">Contents</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <p class="eyebrow">Privacy Policy</p>
+  <h1>にゃんぱ～せんと<br>プライバシーポリシー</h1>
+  <p class="lead">IRVVEE（以下「当事業者」）は、Androidアプリ「にゃんぱ～せんと」（以下「本アプリ」）における利用者の情報の取り扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。</p>
+</div>
+
+<main class="policy">
+  <h2>1. 事業者情報</h2>
+  <ul>
+    <li>運営者：IRVVEE（個人事業主）</li>
+    <li>連絡先：<a href="../contact.html">お問い合わせフォーム</a></li>
+  </ul>
+
+  <h2>2. 取得する情報</h2>
+  <p>本アプリは、氏名・メールアドレス・電話番号・位置情報などの個人情報を取得しません。アカウント登録もありません。広告やアクセス解析ツールも使用していません。</p>
+  <p>ステータスバーにネコを表示するため、次の情報を<strong>お使いの端末の中だけで</strong>扱います。これらを当事業者や外部のサーバーへ送信することはありません。</p>
+  <ul>
+    <li>電池の残量と充電状態</li>
+    <li>通信の状態（Wi-Fi・モバイル通信の接続の有無と電波の強さ）</li>
+    <li>画面の状態（ロック中かどうか、通知画面が開いているかどうか）
+      <span class="note">ユーザー補助（アクセシビリティ）サービスを使い、いま表示されている画面の種類だけを確認します。画面の文字や入力した内容を読み取ったり保存したりすることはありません。</span></li>
+    <li>通知のアイコン（「通知へのアクセス」を許可した場合のみ）
+      <span class="note">各アプリの通知アイコンをバーに表示するためだけに使います。通知の題名や本文を読み取ったり保存したりすることはありません。</span></li>
+    <li>アプリの設定（ネコの色・表示の設定）、お試し期間の開始日時、購入済みかどうか
+      <span class="note">端末の中に保存します。</span></li>
+  </ul>
+  <p>このほか、お問い合わせをいただいた場合は、お名前（任意）・返信先のメールアドレス・お問い合わせ内容を取得します。</p>
+
+  <h2>3. 利用目的</h2>
+  <p>取得した情報は、以下の目的の範囲内で利用します。</p>
+  <ul>
+    <li>ステータスバーにネコと端末の状態を表示するため</li>
+    <li>お試し期間の管理と、購入状態の確認のため</li>
+    <li>お問い合わせへの回答のため</li>
+    <li>上記の利用目的の範囲を超えて利用することはありません</li>
+  </ul>
+
+  <h2>4. 第三者提供</h2>
+  <p>法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。</p>
+
+  <h2>5. 外部サービスの利用</h2>
+  <p>本アプリは、完全版の購入（アプリ内課金）に Google Play の請求サービスを利用しています。お支払い情報は Google が取り扱い、当事業者がクレジットカード番号などを受け取ることはありません。当事業者が確認できるのは、注文番号などの購入の記録のみです。Google による情報の取り扱いについては、<a href="https://policies.google.com/privacy?hl=ja" rel="noopener">Google のプライバシーポリシー</a>をご確認ください。</p>
+
+  <h2>6. 情報の削除</h2>
+  <p>端末の中に保存された情報は、本アプリをアンインストールするか、端末の「設定」→「アプリ」→「にゃんぱ～せんと」→「ストレージ」→「データを削除」で削除できます。お問い合わせでいただいた情報の開示・訂正・削除をご希望の場合は、ご本人確認のうえ、合理的な範囲で速やかに対応します。<a href="../contact.html">お問い合わせフォーム</a>からご連絡ください。</p>
+
+  <h2>7. 本ポリシーの変更</h2>
+  <p>本ポリシーの内容は、法令の変更や本アプリの内容の変更等に応じて、予告なく変更することがあります。変更後の内容は本ページに掲載した時点から効力を生じるものとします。</p>
+
+  <h2>8. お問い合わせ</h2>
+  <p>本ポリシーに関するお問い合わせは、<a href="../contact.html">お問い合わせフォーム</a>までお願いします。</p>
+
+  <p class="dates">制定日：2026-11-12<br>最終改定日：2026-11-12</p>
+</main>
+
+<footer>
+  <svg class="footer-mark" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <path d="M40,30 L75,160 L110,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
+    <path d="M90,30 L125,160 L160,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
+  </svg>&copy; 2026 IRVVEE
+</footer>
+
+</body>
+</html>
