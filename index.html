@@ -3,323 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IRVVEE(アーヴィー)| アプリ開発・コンテンツ制作</title>
-<meta name="description" content="IRVVEEは、スマートフォンアプリの開発配信と、料理コンテンツの制作配信を行う個人事業です。">
-<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>IRVVEE（アーヴィー）| アプリ開発・映像制作</title>
+<meta name="description" content="IRVVEEは、アプリの開発と、映像コンテンツの制作・配信を行う個人スタジオです。">
+<link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #16140f;
-    --paper: #f6f4ef;
-    --black: #100f0c;
-    --white: #fbfaf6;
-    --line: #e2ddd0;
-    --muted: #625e53;
-    --faint: #948f7f;
-    --charcoal: #282623;
-    --ease: cubic-bezier(0.4, 0.4, 0, 1);
-    --ease-pop: cubic-bezier(0.55, 0.44, 0.35, 1.23);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Inter", "Noto Sans JP", sans-serif;
-    line-height: 1.8;
-  }
-  .serif { font-family: "PT Serif", serif; }
-
-  /* ---------- Nav ---------- */
-  header.nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 2rem;
-    background: rgba(246, 244, 239, 0.85);
-    backdrop-filter: blur(8px);
-    transition: background 0.5s var(--ease);
-  }
-  .wordmark {
-    display: inline-flex;
-    align-items: center;
-    color: var(--ink);
-    text-decoration: none;
-    line-height: 0;
-  }
-  .wordmark svg {
-    height: 20px;
-    width: auto;
-    display: block;
-  }
-  nav.links {
-    display: flex;
-    gap: 2rem;
-  }
-  nav.links a {
-    display: inline-flex;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  nav.links a .char {
-    display: inline-block;
-    overflow: hidden;
-    height: 1em;
-    line-height: 1;
-  }
-  nav.links a .char-stack {
-    display: block;
-    transition: transform 0.35s var(--ease);
-    transition-delay: 0s;
-  }
-  nav.links a .char-stack span {
-    display: block;
-    height: 1em;
-    line-height: 1;
-  }
-  nav.links a:hover .char-stack {
-    transform: translateY(-1em);
-    transition-delay: calc(var(--i, 0) * 0.03s);
-  }
-  @media (max-width: 640px) {
-    header.nav { padding: 1.1rem 1.25rem; }
-    nav.links { gap: 1.1rem; }
-    nav.links a { font-size: 0.68rem; letter-spacing: 0.1em; }
-  }
-
-  /* ---------- Hero ---------- */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
-    overflow: hidden;
-  }
-  .hero-accent {
-    position: absolute;
-    right: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%) rotate(180deg);
-    writing-mode: vertical-rl;
-    font-family: "PT Serif", serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.35em;
-    color: var(--faint);
-    text-transform: uppercase;
-  }
-  .hero-mark-bg {
-    position: absolute;
-    right: -3rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: min(46vw, 560px);
-    color: var(--ink);
-    opacity: 0.045;
-    pointer-events: none;
-  }
-  .hero-inner { max-width: 760px; position: relative; }
-  .hero .eyebrow {
-    font-size: 0.8rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-  }
-  .hero h1 {
-    font-family: "PT Serif", serif;
-    font-weight: 700;
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    line-height: 1.25;
-    margin: 0 0 1.5rem;
-    letter-spacing: 0.01em;
-  }
-  .hero p.lead {
-    color: var(--muted);
-    font-size: 1.05rem;
-    max-width: 46ch;
-  }
-  .scroll-cue {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--faint);
-  }
-  .scroll-cue::after {
-    content: "";
-    width: 1px;
-    height: 32px;
-    background: var(--faint);
-    animation: scrollLine 1.8s var(--ease) infinite;
-  }
-  @keyframes scrollLine {
-    0% { transform: scaleY(0); transform-origin: top; }
-    50% { transform: scaleY(1); transform-origin: top; }
-    50.1% { transform-origin: bottom; }
-    100% { transform: scaleY(0); transform-origin: bottom; }
-  }
-
-  /* ---------- Sections ---------- */
-  section.block {
-    padding: 6rem 2rem;
-  }
-  section.block.on-white { background: var(--paper); }
-  section.block.on-black {
-    background: var(--black);
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-  }
-  .contents-mark-bg {
-    position: absolute;
-    right: -2rem;
-    bottom: -3rem;
-    width: min(40vw, 420px);
-    color: var(--white);
-    opacity: 0.05;
-    pointer-events: none;
-  }
-  .block-inner { max-width: 760px; margin: 0 auto; position: relative; }
-  .block h2 {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6em;
-    font-size: 0.8rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    margin: 0 0 2.5rem;
-    color: inherit;
-    opacity: 0.55;
-  }
-  .block h2::before {
-    content: "";
-    width: 1.4em;
-    height: 3px;
-    background: currentColor;
-    display: block;
-    flex: none;
-  }
-  .work { display: grid; gap: 2rem; }
-  .work-item {
-    border-top: 1px solid var(--line);
-    padding-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-  }
-  section.on-black .work-item { border-top-color: rgba(255,255,255,0.15); }
-  .work-item-body { flex: 1; min-width: 0; }
-  .work-item-thumb {
-    flex: none;
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--line);
-    border: 1px solid var(--line);
-  }
-  section.on-black .work-item-thumb { border-color: rgba(255,255,255,0.15); }
-  .work-item-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .work-item h3 {
-    font-family: "PT Serif", serif;
-    font-size: 1.3rem;
-    margin: 0 0 0.5rem;
-  }
-  .work-item p { margin: 0 0 0.75rem; opacity: 0.75; }
-  .work-item a {
-    display: inline-block;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    transition: opacity 0.3s var(--ease);
-  }
-  .work-item a:hover { opacity: 0.6; }
-  .work-item-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
-  @media (max-width: 640px) {
-    .work-item-thumb { width: 52px; height: 52px; border-radius: 13px; }
-  }
-
-  address {
-    font-style: normal;
-    font-size: 0.95rem;
-    opacity: 0.85;
-    margin: 0 0 2.5rem;
-  }
-  address a { color: inherit; }
-
-  .cta-link {
-    display: inline-block;
-    margin-top: 1.5rem;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    transition: opacity 0.3s var(--ease);
-  }
-  .cta-link:hover { opacity: 0.6; }
-
-  footer {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem 3rem;
-    color: var(--faint);
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-  }
-
-  /* ---------- Scroll reveal ---------- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-  }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .footer-mark {
-    height: 11px;
-    width: auto;
-    vertical-align: -1px;
-    margin-right: 0.5em;
-    color: var(--faint);
-    opacity: 0.7;
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 
-<header class="nav">
-  <a href="#top" class="wordmark" aria-label="IRVVEE">
+<header class="site-head">
+  <a class="logo" href="/" aria-label="IRVVEE トップへ">
     <svg viewBox="-24 -34 600 170" aria-hidden="true" focusable="false">
       <path stroke-width="14" fill="none" stroke="currentColor" d="M37,0 L37,100"/>
       <path stroke-width="14" fill="none" stroke="currentColor" d="M102,100 L102,0 L148,0 L148,44 L108,44"/>
@@ -336,169 +33,157 @@
       <path stroke-width="14" fill="none" stroke="currentColor" d="M490,100 L536,100"/>
     </svg>
   </a>
-  <nav class="links">
-    <a href="#apps" data-label="Apps"></a>
-    <a href="#contents" data-label="Contents"></a>
-    <a href="contact.html" data-label="Contact"></a>
+  <nav class="site-nav">
+    <a href="/#works">Works</a>
+    <a href="/#about">About</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero" id="top">
-  <svg class="hero-mark-bg" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-    <path d="M40,30 L75,160 L110,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
-    <path d="M90,30 L125,160 L160,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
-  </svg>
-  <div class="hero-accent">IRVVEE</div>
-  <div class="hero-inner">
-    <h1 class="reveal">アプリ開発と<br>コンテンツ制作</h1>
-    <p class="lead reveal">生活を少し便利にするアプリの開発と、食にまつわる映像コンテンツの制作・配信を行っています。</p>
-  </div>
-  <div class="scroll-cue">Scroll</div>
-</section>
-
-<section class="block on-white reveal" id="apps">
-  <div class="block-inner">
-    <h2>Apps</h2>
-    <div class="work">
-      <div class="work-item">
-        <div class="work-item-body">
-          <h3>ずぼらストック</h3>
-          <p>日用品の残量管理と家族共有ができるアプリ。</p>
-          <div class="work-item-links">
-            <a href="https://play.google.com/store/apps/details?id=com.zuborastock.app" target="_blank" rel="noopener">Google Play で入手</a>
-            <a href="https://zuborastock.web.app" target="_blank" rel="noopener">Web版 zuborastock.web.app</a>
-          </div>
-        </div>
-        <div class="work-item-thumb">
-          <img src="icons/thumbs/zuborastock.png" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="work-item">
-        <div class="work-item-body">
-          <h3>はちカルテ</h3>
-          <p>植物の栽培記録とケア通知ができるアプリ。</p>
-          <a href="https://hatikarte.web.app" target="_blank" rel="noopener">hatikarte.web.app</a>
-        </div>
-        <div class="work-item-thumb">
-          <img src="icons/thumbs/hachikarte.png" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="work-item">
-        <div class="work-item-body">
-          <h3>にゃんぱ～せんと</h3>
-          <p>スマホのステータスバーで、猫がバッテリー残量を知らせてくれるAndroidアプリ。</p>
-          <a href="https://play.google.com/store/apps/details?id=com.irvvee.nyanpercent" target="_blank" rel="noopener">Google Play で入手</a>
-        </div>
-        <div class="work-item-thumb">
-          <img src="icons/thumbs/nyanpercent.png" alt="" loading="lazy">
-        </div>
-      </div>
+<main>
+  <section class="reel" aria-label="ショーリール">
+    <div class="reel-frames">
+      <figure class="frame is-on" data-title="キツネのまかない飯"><img src="/assets/img/kitsune-1.jpg" alt=""></figure>
+      <figure class="frame" data-title="引取人ナキ遺留品室"><img src="/assets/img/horror-banner.jpg" alt=""></figure>
+      <figure class="frame" data-title="キツネのまかない飯"><img src="/assets/img/kitsune-2.jpg" alt=""></figure>
     </div>
-  </div>
-</section>
+    <div class="reel-copy">
+      <p class="kicker">Apps &amp; Films</p>
+      <h1>フレームの中に、<br>暮らしと物語を。</h1>
+      <p class="lead">IRVVEE は、アプリの開発と、映像コンテンツの制作・配信を行う個人スタジオです。</p>
+    </div>
+    <p class="reel-caption"><span class="reel-index">01</span><span class="reel-total"> / 03</span><span class="reel-title">キツネのまかない飯</span></p>
+  </section>
 
-<section class="block on-black reveal" id="contents">
-  <svg class="contents-mark-bg" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-    <path d="M40,30 L75,160 L110,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
-    <path d="M90,30 L125,160 L160,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
-  </svg>
-  <div class="block-inner">
-    <h2>Contents</h2>
-    <div class="work">
-      <div class="work-item">
-        <div class="work-item-body">
-          <h3>キツネのまかない飯【イタリア伝統 郷土 家庭料理】</h3>
-          <p>日本の家庭でも作りやすいイタリア郷土料理を紹介する動画チャンネル。</p>
-          <div class="work-item-links">
-            <a href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener">YouTube チャンネル</a>
+  <section class="featured" id="works">
+    <div class="inner">
+      <header class="sec-head">
+        <p class="sec-label">Featured</p>
+        <h2>主な制作物</h2>
+      </header>
+
+      <article class="feat">
+        <a class="feat-media" href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener"><img src="/assets/img/kitsune-1.jpg" alt="キツネのまかない飯の映像のひとこま" loading="lazy"></a>
+        <div class="feat-body">
+          <p class="feat-cat">Film ／ YouTube チャンネル</p>
+          <h3>キツネのまかない飯</h3>
+          <p class="feat-desc">日本の家庭でも作りやすいイタリア郷土料理を紹介する動画チャンネル。</p>
+          <p class="feat-links">
+            <a href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener">YouTube で見る</a>
             <a href="https://x.com/AMATSUKI999" target="_blank" rel="noopener">X @AMATSUKI999</a>
-          </div>
+          </p>
         </div>
-        <div class="work-item-thumb">
-          <img src="icons/thumbs/youtube.png" alt="" loading="lazy">
+      </article>
+
+      <article class="feat">
+        <a class="feat-media" href="https://www.youtube.com/channel/UCy9DfJnpniKRqv0ITWPufrg" target="_blank" rel="noopener"><img src="/assets/img/horror-banner.jpg" alt="引取人ナキ遺留品室のバナー" loading="lazy"></a>
+        <div class="feat-body">
+          <p class="feat-cat">Film ／ YouTube チャンネル</p>
+          <h3>引取人ナキ遺留品室</h3>
+          <p class="feat-desc">持ち主が戻らなかった遺留品に残された記録を、一点ずつ公開するホラー映像チャンネル。</p>
+          <p class="feat-links">
+            <a href="https://www.youtube.com/channel/UCy9DfJnpniKRqv0ITWPufrg" target="_blank" rel="noopener">YouTube で見る</a>
+          </p>
         </div>
-      </div>
-      <div class="work-item">
-        <div class="work-item-body">
-          <h3>引取人ナキ遺留品室 Unclaimed Effects</h3>
-          <p>持ち主が戻らなかった遺留品に残された記録を、一点ずつ公開するホラー映像チャンネル。</p>
-          <a href="https://www.youtube.com/channel/UCy9DfJnpniKRqv0ITWPufrg" target="_blank" rel="noopener">YouTube チャンネル</a>
+      </article>
+
+      <article class="feat">
+        <a class="feat-media" href="https://play.google.com/store/apps/details?id=com.irvvee.nyanpercent" target="_blank" rel="noopener"><img src="/assets/img/nyan-feature.jpg" alt="にゃんぱ～せんとの紹介画像。電池残量を、ネコで。" loading="lazy"></a>
+        <div class="feat-body">
+          <p class="feat-cat">App ／ Android</p>
+          <h3>にゃんぱ～せんと</h3>
+          <p class="feat-desc">スマホのステータスバーで、猫がバッテリー残量を知らせてくれるアプリ。</p>
+          <p class="feat-links">
+            <a href="https://play.google.com/store/apps/details?id=com.irvvee.nyanpercent" target="_blank" rel="noopener">Google Play で入手</a>
+          </p>
         </div>
-        <div class="work-item-thumb">
-          <img src="icons/thumbs/unclaimed-effects.jpg" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="work-item">
-        <div class="work-item-body">
-          <h3>NibLab</h3>
-          <p>万年筆の型番カタログと状態別の相場情報をまとめたデータベース。</p>
-          <a href="https://niblab.irvvee.com" target="_blank" rel="noopener">niblab.irvvee.com</a>
-        </div>
-        <div class="work-item-thumb">
-          <img src="icons/thumbs/niblab.svg" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="work-item">
-        <div class="work-item-body">
-          <h3>Zenn</h3>
-          <p>アプリ開発で得た知見や技術メモを記事として発信しています。</p>
-          <a href="https://zenn.dev/irvvee" target="_blank" rel="noopener">zenn.dev/irvvee</a>
-        </div>
-        <div class="work-item-thumb">
-          <img src="icons/thumbs/zenn.png" alt="" loading="lazy">
-        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="all-works">
+    <div class="inner">
+      <header class="sec-head">
+        <p class="sec-label">All Works</p>
+        <h2>そのほかの制作物</h2>
+      </header>
+      <ul class="work-list">
+        <li><a href="/works/zuborastock.html">
+          <img src="/icons/thumbs/zuborastock.png" alt="" loading="lazy">
+          <span class="wl-name">ずぼらストック</span><span class="wl-cat">App ／ Android・Web</span>
+          <span class="wl-desc">日用品の残量管理と家族共有ができるアプリ。</span><span class="wl-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="https://hatikarte.web.app" target="_blank" rel="noopener">
+          <img src="/icons/thumbs/hachikarte.png" alt="" loading="lazy">
+          <span class="wl-name">はちカルテ</span><span class="wl-cat">App ／ Web</span>
+          <span class="wl-desc">植物の栽培記録とケア通知ができるアプリ。</span><span class="wl-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://niblab.irvvee.com" target="_blank" rel="noopener">
+          <img src="/icons/thumbs/niblab.svg" alt="" loading="lazy">
+          <span class="wl-name">NibLab</span><span class="wl-cat">Database ／ Web</span>
+          <span class="wl-desc">万年筆の型番カタログと状態別の相場情報をまとめたデータベース。</span><span class="wl-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://zenn.dev/irvvee" target="_blank" rel="noopener">
+          <img src="/icons/thumbs/zenn.png" alt="" loading="lazy">
+          <span class="wl-name">Zenn</span><span class="wl-cat">Writing ／ 技術記事</span>
+          <span class="wl-desc">アプリ開発で得た知見や技術メモを記事として発信しています。</span><span class="wl-arrow" aria-hidden="true">↗</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="inner">
+      <header class="sec-head">
+        <p class="sec-label">About</p>
+        <h2>IRVVEE について</h2>
+      </header>
+      <dl class="profile">
+        <div><dt>屋号</dt><dd>IRVVEE（アーヴィー）</dd></div>
+        <div><dt>形態</dt><dd>個人事業</dd></div>
+        <div><dt>事業内容</dt><dd>アプリの開発・配信<br>映像コンテンツの制作・配信<br>技術記事の執筆</dd></div>
+        <div><dt>お問い合わせ</dt><dd><a href="/contact.html">お問い合わせフォーム</a></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="big-foot" id="contact">
+  <div class="foot-top">
+    <div class="foot-call">
+      <p class="foot-label">Contact</p>
+      <h2>Let&rsquo;s make<br>something good.</h2>
+      <p class="foot-sub">アプリや映像についてのご相談・ご依頼は、お気軽にどうぞ。</p>
+      <div class="pill-row">
+        <a class="pill" href="/contact.html">お問い合わせフォーム <span aria-hidden="true">→</span></a>
+        <a class="pill" href="https://zenn.dev/irvvee" target="_blank" rel="noopener">Zenn の記事 <span class="dot" aria-hidden="true"></span></a>
       </div>
     </div>
+    <ul class="foot-links">
+      <li><a href="https://www.youtube.com/@AMATSUKI999" target="_blank" rel="noopener">キツネのまかない飯</a></li>
+      <li><a href="https://www.youtube.com/channel/UCy9DfJnpniKRqv0ITWPufrg" target="_blank" rel="noopener">引取人ナキ遺留品室</a></li>
+      <li><a href="https://x.com/AMATSUKI999" target="_blank" rel="noopener">X</a></li>
+      <li><a href="https://zenn.dev/irvvee" target="_blank" rel="noopener">Zenn</a></li>
+    </ul>
   </div>
-</section>
-
-<section class="block on-white reveal" id="contact">
-  <div class="block-inner">
-    <h2>Contact</h2>
-    <address>
-      屋号:IRVVEE(個人事業主)
-    </address>
-    <p>アプリやコンテンツについてのご質問・ご依頼は、お問い合わせフォームよりご連絡ください。</p>
-    <a href="contact.html" class="cta-link">お問い合わせフォームへ</a>
+  <a class="foot-logo" href="/" aria-label="IRVVEE トップへ"><svg viewBox="29 -22 508 146" aria-hidden="true" focusable="false">
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M37,0 L37,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M102,100 L102,0 L148,0 L148,44 L108,44"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M118,50 L158,100"/>
+      <path stroke-width="26" fill="none" stroke="currentColor" d="M184,-8 L224,108 L264,-8"/>
+      <path stroke-width="26" fill="none" stroke="currentColor" d="M290,-8 L330,108 L370,-8"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,0 L406,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,0 L452,0"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,50 L440,50"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M406,100 L452,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,0 L490,100"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,0 L536,0"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,50 L524,50"/>
+      <path stroke-width="14" fill="none" stroke="currentColor" d="M490,100 L536,100"/>
+    </svg></a>
+  <div class="foot-bottom">
+    <span>&copy; <span data-year></span> IRVVEE</span>
+    <span>Apps &amp; Films — Made in Japan</span>
+    <a href="#">Back to top ↑</a>
   </div>
-</section>
-
-<footer>
-  <svg class="footer-mark" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-    <path d="M40,30 L75,160 L110,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
-    <path d="M90,30 L125,160 L160,30" fill="none" stroke="currentColor" stroke-width="26" stroke-linejoin="miter"/>
-  </svg>&copy; <span id="year"></span> IRVVEE
 </footer>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  document.querySelectorAll("nav.links a[data-label]").forEach((a) => {
-    const label = a.dataset.label;
-    [...label].forEach((ch, i) => {
-      const glyph = ch === " " ? " " : ch;
-      const charEl = document.createElement("span");
-      charEl.className = "char";
-      charEl.style.setProperty("--i", i);
-      const stackEl = document.createElement("span");
-      stackEl.className = "char-stack";
-      stackEl.innerHTML = `<span>${glyph}</span><span>${glyph}</span>`;
-      charEl.appendChild(stackEl);
-      a.appendChild(charEl);
-    });
-  });
-
-  const revealEls = document.querySelectorAll(".reveal");
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-  revealEls.forEach((el) => io.observe(el));
-</script>
-
+<script src="/assets/site.js"></script>
 </body>
 </html>
